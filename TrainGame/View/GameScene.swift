@@ -11,6 +11,7 @@ import GameplayKit
 
 class GameScene: SKScene {
     
+    //#MARK: Variables
     var entities = [GKEntity]()
     var graphs = [String : GKGraph]()
     var entityManager: EntityManager!
@@ -19,7 +20,11 @@ class GameScene: SKScene {
     private var label : SKLabelNode?
     private var spinnyNode : SKShapeNode?
     
+    
+    //#MARK: DidMove_FUNC
     override func didMove(to view: SKView) {
+        super.didMove(to: view)
+        
         entityManager = EntityManager(scene: self)
         
         
@@ -28,6 +33,10 @@ class GameScene: SKScene {
             spriteComponent.node.position = CGPoint(x: spriteComponent.node.size.width/2, y: size.height/2)
         }
         entityManager.add(personagemPrincipal)
+        
+      
+        addSwiperRecognizer()
+        
     }
     
     override func sceneDidLoad() {
@@ -72,11 +81,7 @@ class GameScene: SKScene {
       //  print("cancel")
         for t in touches { self.touchUp(atPoint: t.location(in: self)) }
     }
-    
-    override func didMove(to view: SKView) {
-        super.didMove(to: view)
-        addSwiperRecognizer()
-    }
+
     
     func addSwiperRecognizer() {
         let gesturesDirections: [UISwipeGestureRecognizer.Direction] = [.up,.down,.left,.right]
