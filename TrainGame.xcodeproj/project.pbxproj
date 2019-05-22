@@ -41,6 +41,26 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		1DEC9B9B22959E90004E9B37 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				1F6275CB229445860025165C /* AppDelegate.swift */,
+				1F6275D3229445860025165C /* GameViewController.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		1DEC9B9C22959EF9004E9B37 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				1F6275CD229445860025165C /* GameScene.sks */,
+				1F6275CF229445860025165C /* Actions.sks */,
+				1F6275D1229445860025165C /* GameScene.swift */,
+				1F6275D5229445860025165C /* Main.storyboard */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
 		1F6275BF229445860025165C = {
 			isa = PBXGroup;
 			children = (
@@ -60,12 +80,8 @@
 		1F6275CA229445860025165C /* TrainGame */ = {
 			isa = PBXGroup;
 			children = (
-				1F6275CB229445860025165C /* AppDelegate.swift */,
-				1F6275CD229445860025165C /* GameScene.sks */,
-				1F6275CF229445860025165C /* Actions.sks */,
-				1F6275D1229445860025165C /* GameScene.swift */,
-				1F6275D3229445860025165C /* GameViewController.swift */,
-				1F6275D5229445860025165C /* Main.storyboard */,
+				1DEC9B9C22959EF9004E9B37 /* View */,
+				1DEC9B9B22959E90004E9B37 /* Controller */,
 				1F6275D8229445870025165C /* Assets.xcassets */,
 				1F6275DA229445870025165C /* LaunchScreen.storyboard */,
 				1F6275DD229445870025165C /* Info.plist */,
