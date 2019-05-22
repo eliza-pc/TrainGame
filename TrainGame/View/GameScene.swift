@@ -13,10 +13,22 @@ class GameScene: SKScene {
     
     var entities = [GKEntity]()
     var graphs = [String : GKGraph]()
+    var entityManager: EntityManager!
     
     private var lastUpdateTime : TimeInterval = 0
     private var label : SKLabelNode?
     private var spinnyNode : SKShapeNode?
+    
+    override func didMove(to view: SKView) {
+        entityManager = EntityManager(scene: self)
+        
+        
+        let personagemPrincipal = Player(imageName: "PersonagemPrincipal")
+        if let spriteComponent = personagemPrincipal.component(ofType: SpriteComponent.self) {
+            spriteComponent.node.position = CGPoint(x: spriteComponent.node.size.width/2, y: size.height/2)
+        }
+        entityManager.add(personagemPrincipal)
+    }
     
     override func sceneDidLoad() {
 
@@ -80,4 +92,5 @@ class GameScene: SKScene {
         
         self.lastUpdateTime = currentTime
     }
+    
 }
