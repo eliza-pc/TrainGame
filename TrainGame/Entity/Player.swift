@@ -13,10 +13,10 @@ class Player: GKEntity{
     
     init(imageName: String){
         super.init()
-        
+        let movecomponent = MoveComponent()
         let spriteComponent = SpriteComponent(texture: SKTexture(imageNamed: imageName))
         addComponent(spriteComponent)
-        
+        addComponent(movecomponent)
     }
     
     required init?(coder aDecoder: NSCoder) {
