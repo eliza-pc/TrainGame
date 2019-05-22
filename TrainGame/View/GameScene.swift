@@ -28,39 +28,70 @@ class GameScene: SKScene {
     
     func touchDown(atPoint pos : CGPoint) {
         //Quando comeca o touch
-        print("Beggin")
+      //  print("Beggin")
     }
     
     func touchMoved(toPoint pos : CGPoint) {
         //Quando usa-se o touch
-        print("Moved")
+       // print("Moved")
     }
     
     func touchUp(atPoint pos : CGPoint) {
         //Quando acaba o touch
-        print("Ended")
+     //   print("Ended")
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-        print("Began")
+      //  print("Began")
         for t in touches { self.touchDown(atPoint: t.location(in: self)) }
     }
     
     override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) {
-        print("Moved")
+      //  print("Moved")
         for t in touches { self.touchMoved(toPoint: t.location(in: self)) }
     }
     
     override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
-        print("Ended")
+       // print("Ended")
         for t in touches { self.touchUp(atPoint: t.location(in: self)) }
     }
     
     override func touchesCancelled(_ touches: Set<UITouch>, with event: UIEvent?) {
-        print("cancel")
+      //  print("cancel")
         for t in touches { self.touchUp(atPoint: t.location(in: self)) }
     }
     
+    override func didMove(to view: SKView) {
+        super.didMove(to: view)
+        addSwiperRecognizer()
+    }
+    
+    func addSwiperRecognizer() {
+        let gesturesDirections: [UISwipeGestureRecognizer.Direction] = [.up,.down,.left,.right]
+        for gesturesDirection in gesturesDirections {
+            let gestureRecognizer = UISwipeGestureRecognizer(target: self, action: #selector(handleSwipe))
+            gestureRecognizer.direction = gesturesDirection
+            self.view?.addGestureRecognizer(gestureRecognizer)
+        }
+        
+    }
+    
+    @objc func handleSwipe(gesture: UIGestureRecognizer){
+        if let gesture = gesture as? UISwipeGestureRecognizer {
+            switch gesture.direction{
+            case .up:
+                print("up")
+            case .down:
+                print("down")
+            case .left:
+                print("left")
+            case .right:
+                print("right")
+            default:
+                print("don't have swipe")
+            }
+        }
+    }
     
     override func update(_ currentTime: TimeInterval) {
         // Called before each frame is rendered
