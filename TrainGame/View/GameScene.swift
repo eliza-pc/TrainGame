@@ -20,7 +20,8 @@ class GameScene: SKScene {
     private var label : SKLabelNode?
     private var spinnyNode : SKShapeNode?
     private var control: Control?
-    
+   
+    private var haveControl: Bool = false
     
     //#MARK: DidMove_FUNC
     override func didMove(to view: SKView) {
@@ -34,7 +35,7 @@ class GameScene: SKScene {
             spriteComponent.node.position = CGPoint(x: 0, y: 0)
         }
         entityManager.add(personagemPrincipal)
-        entities.append(personagemPrincipal)
+//        entities.append(personagemPrincipal)
         
     }
     
@@ -45,24 +46,8 @@ class GameScene: SKScene {
        
     }
     
-    
-    func touchDown(atPoint pos : CGPoint) {
-        //Quando comeca o touch
-      //  print("Beggin")
-    }
-    
-    func touchMoved(toPoint pos : CGPoint) {
-        //Quando usa-se o touch
-       // print("Moved")
-    }
-    
-    func touchUp(atPoint pos : CGPoint) {
-        //Quando acaba o touch
-     //   print("Ended")
-    }
-    
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-      //  print("Began")
+        print("Began")
       //  for t in touches { self.touchDown(atPoint: t.location(in: self)) }
         guard touches.count == 1, let touch = touches.first else {
             return
@@ -72,7 +57,7 @@ class GameScene: SKScene {
     }
     
     override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) {
-      //  print("Moved")
+        print("Moved")
       //  for t in touches { self.touchMoved(toPoint: t.location(in: self)) }
         guard touches.count == 1, let touch = touches.first else {
             return
@@ -83,17 +68,16 @@ class GameScene: SKScene {
     }
     
     override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
-       // print("Ended")
+        print("Ended")
        // for t in touches { self.touchUp(atPoint: t.location(in: self)) }
         guard touches.count == 1, let touch = touches.first else {
             return
         }
-        
         control?.touchEnded(touch, in: scene!)
     }
     
     override func touchesCancelled(_ touches: Set<UITouch>, with event: UIEvent?) {
-      //  print("cancel")
+        print("cancel")
       //  for t in touches { self.touchUp(atPoint: t.location(in: self)) }
         guard touches.count == 1, let touch = touches.first else {
             return
@@ -114,12 +98,23 @@ class GameScene: SKScene {
         let dt = currentTime - self.lastUpdateTime
         
         // Update entities
-        for entity in self.entities {
-            if let control = self.control, let component = entity.component(ofType: MoveComponent.self){
-             //   print(entity)
-                component.updatePressedButtons(control: control.directionCommand ?? nil, dt: dt)
-            }
-            entity.update(deltaTime: dt)
+        
+//        for entity in self.entities {
+//            if let control = self.control, let component = entity.component(ofType: MoveComponent.self){
+//             //   print(entity)
+//                component.updatePressedButtons(control: control.directionCommand ?? nil, dt: dt)
+//            }
+//            entity.update(deltaTime: dt)
+        if control != nil {
+            haveControl = true
+        } else {
+            haveControl = false
+        }
+        
+        if haveControl == true {
+            entityManager.updateControl(dt: dt, ctrol: control!)
+        } else {
+            entityManager.update(dt: dt)
         }
         
         self.lastUpdateTime = currentTime

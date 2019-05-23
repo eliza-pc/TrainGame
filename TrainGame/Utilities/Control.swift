@@ -16,7 +16,7 @@ enum UserControl {
     case left
     case right
     case jump
-    case act
+    case idle
 }
 
 
@@ -61,6 +61,11 @@ class Control {
                 print("don't have swipe")
             }
         }
+        
+//        if gesture.state == .ended {
+//            directionCommand = UserControl.idle
+//            print("idle")
+//        }
     }
     
     
@@ -97,6 +102,8 @@ class Control {
 //        touchInitialLocation = nil
 //        region = nil
     }
+    
+    // MARK: - UserController
 
     
 }

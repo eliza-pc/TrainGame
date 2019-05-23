@@ -39,4 +39,26 @@ class EntityManager {
         entities.remove(entity)
     }
     
+    func update(dt: TimeInterval) {
+//        for entity in entities {
+//            entity.update(deltaTime: seconds)
+//        }
+        for entity in self.entities {
+            entity.update(deltaTime: dt)
+        }
+    }
+    
+    func updateControl(dt: TimeInterval, ctrol: Control) {
+        //        for entity in entities {
+        //            entity.update(deltaTime: seconds)
+        //        }
+        for entity in self.entities {
+            if let component = entity.component(ofType: MoveComponent.self){
+                //   print(entity)
+                component.updatePressedButtons(control: ctrol.directionCommand, dt: dt)
+            }
+            entity.update(deltaTime: dt)
+        }
+    }
+
 }
