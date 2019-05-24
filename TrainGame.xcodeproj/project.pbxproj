@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		1D7261EA2295FF3E00BA2090 /* MoveComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D7261E92295FF3E00BA2090 /* MoveComponent.swift */; };
 		1D7261ED2296067700BA2090 /* Control.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D7261EC2296067700BA2090 /* Control.swift */; };
 		1DD45B012297809800A8A5AF /* TLAnalogJoystick.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DD45B002297809800A8A5AF /* TLAnalogJoystick.swift */; };
 		1DD45B032297857400A8A5AF /* CameraComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DD45B022297857400A8A5AF /* CameraComponent.swift */; };
@@ -25,7 +24,6 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		1D7261E92295FF3E00BA2090 /* MoveComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoveComponent.swift; sourceTree = "<group>"; };
 		1D7261EC2296067700BA2090 /* Control.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Control.swift; sourceTree = "<group>"; };
 		1DD45B002297809800A8A5AF /* TLAnalogJoystick.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TLAnalogJoystick.swift; sourceTree = "<group>"; };
 		1DD45B022297857400A8A5AF /* CameraComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraComponent.swift; sourceTree = "<group>"; };
@@ -88,7 +86,6 @@
 			isa = PBXGroup;
 			children = (
 				1F3CFE7E2295CC3700053686 /* SpriteComponent.swift */,
-				1D7261E92295FF3E00BA2090 /* MoveComponent.swift */,
 				1DD45B022297857400A8A5AF /* CameraComponent.swift */,
 			);
 			path = Components;
@@ -207,7 +204,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				1D7261EA2295FF3E00BA2090 /* MoveComponent.swift in Sources */,
 				1D7261ED2296067700BA2090 /* Control.swift in Sources */,
 				1DD45B032297857400A8A5AF /* CameraComponent.swift in Sources */,
 				1F6275D2229445860025165C /* GameScene.swift in Sources */,
