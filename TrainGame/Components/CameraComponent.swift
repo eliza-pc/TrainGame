@@ -16,7 +16,7 @@ class CameraComponent: GKComponent {
     
     init(scene: SKScene){
         super.init()
-        scene.camera = cam
+        scene.camera = scene.childNode(withName: "camera") as? SKCameraNode
     }
     
     func followPlayer (player: SKSpriteNode) {

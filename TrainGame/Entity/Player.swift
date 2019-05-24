@@ -17,7 +17,9 @@ class Player: GKEntity{
         let spriteComponent = SpriteComponent(texture: SKTexture(imageNamed: imageName), gameScene: gameScene)
         spriteComponent.node.texture = SKTexture.init(imageNamed: imageName)
         addComponent(spriteComponent)
-        addComponent(movecomponent)
+        let camerComponent = CameraComponent(scene: gameScene)
+        addComponent(spriteComponent)
+        addComponent(camerComponent)
     }
     
     required init?(coder aDecoder: NSCoder) {
