@@ -9,7 +9,7 @@
 import SpriteKit
 import GameplayKit
 
-class GameScene: SKScene {
+class GameScene: SKScene, SKPhysicsContactDelegate {
     
     //#MARK: Variables
 //    var entities = [GKEntity]()
@@ -41,6 +41,8 @@ class GameScene: SKScene {
     //#MARK: DidMove_FUNC
     override func didMove(to view: SKView) {
         
+        //Para add physicsbody
+        physicsWorld.contactDelegate = self
         
         let moveJoystickHiddenArea = TLAnalogJoystickHiddenArea(rect: CGRect(x: 0, y: 0, width: frame.width, height: frame.height))
         moveJoystickHiddenArea.joystick = moveJoystick
@@ -97,6 +99,10 @@ class GameScene: SKScene {
         entityManager.add(personagemPrincipal)
         view.isMultipleTouchEnabled = true
         
+    }
+    
+    func didBegin(_ contact: SKPhysicsContact) {
+        print("FOIII!😎")
     }
     
     override func sceneDidLoad() {
