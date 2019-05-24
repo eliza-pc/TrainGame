@@ -11,10 +11,11 @@ import GameplayKit
 
 class Player: GKEntity{
     
-    init(imageName: String){
+    init(imageName: String, gameScene: GameScene){
         super.init()
         let movecomponent = MoveComponent()
-        let spriteComponent = SpriteComponent(texture: SKTexture(imageNamed: imageName))
+        let spriteComponent = SpriteComponent(texture: SKTexture(imageNamed: imageName), gameScene: gameScene)
+        spriteComponent.node.texture = SKTexture.init(imageNamed: imageName)
         addComponent(spriteComponent)
         addComponent(movecomponent)
     }
