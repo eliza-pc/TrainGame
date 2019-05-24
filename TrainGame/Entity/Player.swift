@@ -16,6 +16,7 @@ class Player: GKEntity{
         let spriteComponent = SpriteComponent(texture: SKTexture(imageNamed: imageName), gameScene: gameScene)
         spriteComponent.node.texture = SKTexture.init(imageNamed: imageName)
         addComponent(spriteComponent)
+        spriteComponent.node.zPosition = -3
         let camerComponent = CameraComponent(scene: gameScene)
         addComponent(spriteComponent)
         addComponent(camerComponent)
