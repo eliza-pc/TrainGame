@@ -12,13 +12,12 @@ import GameplayKit
 
 class CameraComponent: GKComponent {
     
-    let cam = SKCameraNode()
+    let cam: SKCameraNode
     
     init(scene: SKScene){
+        cam = (scene.childNode(withName: "camera") as? SKCameraNode)!
+        scene.camera = cam
         super.init()
-        print(scene.childNode(withName: "camera") as? SKCameraNode)
-        scene.camera = scene.childNode(withName: "camera") as? SKCameraNode
-        
     }
     
     func followPlayer (player: SKSpriteNode) {
