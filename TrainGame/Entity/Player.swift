@@ -13,7 +13,6 @@ class Player: GKEntity{
     
     init(imageName: String, gameScene: GameScene){
         super.init()
-        let movecomponent = MoveComponent()
         let spriteComponent = SpriteComponent(texture: SKTexture(imageNamed: imageName), gameScene: gameScene)
         spriteComponent.node.texture = SKTexture.init(imageNamed: imageName)
         addComponent(spriteComponent)

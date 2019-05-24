@@ -39,4 +39,13 @@ class EntityManager {
         entities.remove(entity)
     }
     
+    func update(dt: TimeInterval) {
+        for entity in entities {
+            if let cameraComponent = entity.component(ofType: CameraComponent.self), let spriteNode = entity.component(ofType: SpriteComponent.self)?.node {
+                cameraComponent.followPlayer(player: spriteNode)
+            }
+            entity.update(deltaTime: dt)
+        }
+    }
+    
 }

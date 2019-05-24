@@ -118,15 +118,7 @@ class GameScene: SKScene {
         // Calculate time since last update
         let dt = currentTime - self.lastUpdateTime
         
-//        // Update entities
-//        for entity in self.entities {
-//            if let control = self.control, let component = entity.component(ofType: MoveComponent.self){
-//             //   print(entity)
-//                component.updatePressedButtons(control: control.directionCommand ?? nil, dt: dt)
-//            }
-//            entity.update(deltaTime: dt)
-//        }
-//
+        entityManager.update(dt: dt)
         self.lastUpdateTime = currentTime
     }
     
