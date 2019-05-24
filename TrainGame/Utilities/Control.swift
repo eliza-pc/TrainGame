@@ -11,12 +11,12 @@ import GameplayKit
 
 
 enum UserControl {
-    case up
     case down
     case left
     case right
     case jump
-    case act
+    case idle
+    
 }
 
 
@@ -46,14 +46,16 @@ class Control {
         if let gesture = gesture as? UISwipeGestureRecognizer {
             switch gesture.direction{
             case .up:
-                directionCommand = UserControl.up
+                directionCommand = UserControl.jump
                 print("up")
             case .down:
                 directionCommand = UserControl.down
                 print("down")
             default:
                 print("don't have swipe")
+                
             }
+            
         }
     }
     

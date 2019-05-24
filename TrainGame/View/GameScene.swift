@@ -37,7 +37,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     
     //#MARK: DidMove_FUNC
     override func didMove(to view: SKView) {
-        
+        control = Control(view: self.view!)
         
         //Para add physicsbody
         physicsWorld.contactDelegate = self
@@ -73,8 +73,17 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                 
                 let pVelocity = joystick.velocity;
                 let speed = CGFloat(0.12)
-                // MARK: Move for Physics
-                spriteComponent.node.position = CGPoint(x: spriteComponent.node.position.x + (pVelocity.x * speed), y: spriteComponent.node.position.y)
+                
+                if self.control?.directionCommand == UserControl.jump {
+                    // MARK: Move for Physics
+                    spriteComponent.node.position = CGPoint(x: spriteComponent.node.position.x + (pVelocity.x * speed), y: spriteComponent.node.position.y + 10)
+                    
+                } else {
+                    
+                    // MARK: Move for Physics
+                    spriteComponent.node.position = CGPoint(x: spriteComponent.node.position.x + (pVelocity.x * speed), y: spriteComponent.node.position.y)
+                }
+                
             }
             
             moveJoystick.on(.end) { [unowned self] _ in
@@ -87,7 +96,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                 spriteComponent.node.run(SKAction.sequence(actions))
             }
         }
-        control = Control(view: self.view!)
+        
         entityManager.add(personagemPrincipal)
         view.isMultipleTouchEnabled = false
         
