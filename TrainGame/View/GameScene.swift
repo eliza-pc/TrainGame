@@ -76,7 +76,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                 
                 if self.control?.directionCommand == UserControl.jump {
                     // MARK: Move for Physics
-                    spriteComponent.node.position = CGPoint(x: spriteComponent.node.position.x + (pVelocity.x * speed), y: spriteComponent.node.position.y + 10)
+                    spriteComponent.node.position = CGPoint(x: spriteComponent.node.position.x + (pVelocity.x * speed), y: spriteComponent.node.position.y + 40)
+                    
                     
                 } else {
                     
@@ -104,6 +105,9 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     
     func didBegin(_ contact: SKPhysicsContact) {
         print("FOIII!😎")
+        
+        control?.directionCommand =  UserControl.idle
+        
     }
     
     override func sceneDidLoad() {
