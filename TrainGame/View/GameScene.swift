@@ -12,17 +12,14 @@ import GameplayKit
 class GameScene: SKScene, SKPhysicsContactDelegate {
     
     //#MARK: Variables
-//    var entities = [GKEntity]()
     var graphs = [String : GKGraph]()
     var entityManager: EntityManager!
     
     private var lastUpdateTime : TimeInterval = 0
     private var label : SKLabelNode?
     private var spinnyNode : SKShapeNode?
-  //  private var control: Control?
+    private var control: Control?
     
-//    let jSizePlusSpriteNode = SKSpriteNode(imageNamed: "plus")
-//    let jSizeMinusSpriteNode = SKSpriteNode(imageNamed: "minus")
     let setJoystickStickImageBtn = SKLabelNode()
     let setJoystickSubstrateImageBtn = SKLabelNode()
     let joystickStickColorBtn = SKLabelNode(text: "Sticks random color")
@@ -42,7 +39,6 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     override func didMove(to view: SKView) {
         
         
-        
         //Para add physicsbody
         physicsWorld.contactDelegate = self
         
@@ -55,16 +51,10 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         
         
         let personagemPrincipal = Player(imageName: "PersonagemPrincipal", gameScene: self)
-        //
-        //        if let spriteComponent = personagemPrincipal.component(ofType: SpriteComponent.self) {
-        //            spriteComponent.node.position = CGPoint(x: 0, y: 0)
-        //        }
-        //        entityManager.add(personagemPrincipal)
+
         
         if let spriteComponent = personagemPrincipal.component(ofType: SpriteComponent.self) {
-            //spriteComponent.node.size = CGSize(width: 100, height: 100)
-           // spriteComponent.node.position = CGPoint(x:284, y: 512)
-            //MARK: Handlers begin
+
             moveJoystick.on(.begin) { [unowned self] _ in
                 //print("pegou1")
                 let actions = [
@@ -83,12 +73,12 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                 
                 let pVelocity = joystick.velocity;
                 let speed = CGFloat(0.12)
-                
+                // MARK: Move for Physics
                 spriteComponent.node.position = CGPoint(x: spriteComponent.node.position.x + (pVelocity.x * speed), y: spriteComponent.node.position.y)
             }
             
             moveJoystick.on(.end) { [unowned self] _ in
-                // print("pegou3")
+
                 let actions = [
                     SKAction.scale(to: 1, duration: 0.5),
                     SKAction.scale(to: 1, duration: 0.5)
@@ -97,9 +87,9 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                 spriteComponent.node.run(SKAction.sequence(actions))
             }
         }
-        
+        control = Control(view: self.view!)
         entityManager.add(personagemPrincipal)
-        view.isMultipleTouchEnabled = true
+        view.isMultipleTouchEnabled = false
         
     }
     
@@ -111,6 +101,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
 
         self.lastUpdateTime = 0
        // Instanciar os objetos
+        
        
     }
     

@@ -33,7 +33,7 @@ class Control {
     //Mark: Gestures of the User
     
     func addSwiperRecognizer(view: UIView) {
-        let gesturesDirections: [UISwipeGestureRecognizer.Direction] = [.up,.down,.left,.right]
+        let gesturesDirections: [UISwipeGestureRecognizer.Direction] = [.up,.down]
         for gesturesDirection in gesturesDirections {
             let gestureRecognizer = UISwipeGestureRecognizer(target: self, action: #selector(handleSwipe))
             gestureRecognizer.direction = gesturesDirection
@@ -51,12 +51,6 @@ class Control {
             case .down:
                 directionCommand = UserControl.down
                 print("down")
-            case .left:
-                directionCommand = UserControl.left
-                print("left")
-            case .right:
-                directionCommand = UserControl.right
-                print("right")
             default:
                 print("don't have swipe")
             }
@@ -68,34 +62,19 @@ class Control {
     // Controlls in game
     
     func touchBegan(_ touch: UITouch, in scene: SKScene) {
-//        var location = touch.location(in: scene)
-//        if let cameraPosition = scene.camera?.position {
-//            location.x -= cameraPosition.x
-//            location.y -= cameraPosition.y
-//        }
-//        touchInitialLocation = location
-//        region = TouchRegion(initialLocation: touchInitialLocation!, location: location, allowsDiagonals: allowsDiagonals)
+
     }
     
     func touchMoved(_ touch: UITouch, in scene: SKScene) {
-//        var location = touch.location(in: scene)
-//        if let cameraPosition = scene.camera?.position {
-//            location.x -= cameraPosition.x
-//            location.y -= cameraPosition.y
-//        }
-//        if let touchInitialLocation = touchInitialLocation {
-//            region = TouchRegion(initialLocation: touchInitialLocation, location: location, allowsDiagonals: allowsDiagonals)
-//        }
+
     }
     
     func touchEnded(_ touch: UITouch, in scene: SKScene) {
-//        touchInitialLocation = nil
-//        region = nil
+
     }
     
     func touchCancelled(_ touch: UITouch, in scene: SKScene) {
-//        touchInitialLocation = nil
-//        region = nil
+
     }
 
     
