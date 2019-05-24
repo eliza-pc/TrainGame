@@ -21,7 +21,7 @@ class CameraComponent: GKComponent {
     }
     
     func followPlayer (player: SKSpriteNode) {
-        print("\(player.position)")
+        //print("\(player.position)")
         cam.position = player.position
     }
     

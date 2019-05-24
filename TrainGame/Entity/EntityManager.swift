@@ -42,7 +42,7 @@ class EntityManager {
     func update(dt: TimeInterval) {
         for entity in entities {
             if let cameraComponent = entity.component(ofType: CameraComponent.self), let spriteNode = entity.component(ofType: SpriteComponent.self)?.node {
-                print("pegouFLC")
+               // print("pegouFLC")
                 cameraComponent.followPlayer(player: spriteNode)
             }
             entity.update(deltaTime: dt)

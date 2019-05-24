@@ -41,6 +41,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     //#MARK: DidMove_FUNC
     override func didMove(to view: SKView) {
         
+        
+        
         //Para add physicsbody
         physicsWorld.contactDelegate = self
         
